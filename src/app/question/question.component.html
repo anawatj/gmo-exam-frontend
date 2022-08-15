@@ -1,0 +1,12 @@
+<div class="row" *ngFor="let question of questions">
+    <label>{{question.questionDesc}}</label>
+    <input type="hidden" [(ngModel)] ="question.id" [ngModelOptions]="{standalone: true}"/>
+    <div class="input-group" *ngFor="let answer of question.answers">
+        <input type="radio"  [name]="question.questionDesc" [value]="answer.id" (change)="radioChange(question.id,answer.id,$event)"  [checked]="answer.selected"/>
+        <label>{{answer.answerDesc}}</label>
+    </div>
+</div>
+<div class="row">
+    <button class="btn btn-light" (click)="save()">Save</button>
+    <button class="btn btn-light" (click)="submit()">Submit</button>
+</div>
